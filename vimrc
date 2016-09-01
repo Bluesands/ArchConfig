@@ -29,7 +29,7 @@ set autoread
 set shortmess=atI
 
 " 忽略文件
-set wildignore=*.swp,*.bak,*.pyc,*.class,*.svn
+set wildignore=*.swp,*.bak,*.pyc,*.class,*.git
 " 突出显示当前列
 set cursorcolumn
 " 突出显示当前行
@@ -66,7 +66,6 @@ function! NumberToggle()
   endif
 endfunc
 noremap <C-n> :call NumberToggle()<cr>
-
 
 
 " ==============================================================================
@@ -115,7 +114,6 @@ Plugin 'flazz/vim-colorschemes'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
-
 set background=dark
 colorscheme solarized
 
@@ -127,8 +125,8 @@ let NERDTreeHighlightCursorline=1
 let NERDTreeIgnore=[ '\.pyc$', '\.pyo$', '\.obj$', '\.o$', '\.so$', '\.egg$', '^\.git$', '^\.svn$', '^\.hg$' ]
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") &&b:NERDTreeType == "primary") | q | endif
 " s/v 分屏打开文件
-let g:NERDTreeMapOpenSplit = 's'
-let g:NERDTreeMapOpenVSplit = 'v'
+" let g:NERDTreeMapOpenSplit = 's'
+" let g:NERDTreeMapOpenVSplit = 'v'
 
 " vimrc文件修改之后自动加载, linux
 autocmd! bufwritepost .vimrc source %
