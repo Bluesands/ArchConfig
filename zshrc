@@ -5,8 +5,8 @@
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-# ZSH_THEME="avit"
-ZSH_THEME="powerline"
+ZSH_THEME="avit"
+# ZSH_THEME="powerline"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -54,7 +54,7 @@ plugins=(git autojump ag htop ccat web-search wd last-working-dir extract z d do
 
 # User configuration
 
-export PATH="/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin/:/usr/bin:$PATH"
+# export PATH="/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin/:/usr/bin:$PATH"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -150,3 +150,50 @@ alias gosshstart='sudo python /opt/shadowsocks/shadowsocks/local.py -c /etc/shad
 alias gosshstop='sudo python /opt/shadowsocks/shadowsocks/local.py -d stop'
 alias gosshrestart='sudo python /opt/shadowsocks/shadowsocks/local.py -d restart'
 
+
+# ==============================================================================
+# percol搜索增强
+function exists { which $1 &> /dev/null }
+
+if exists percol; then
+    function percol_select_history() {
+        local tac
+        exists gtac && tac="gtac" || { exists tac && tac="tac" || { tac="tail -r" } }
+        BUFFER=$(fc -l -n 1 | eval $tac | percol --query "$LBUFFER")
+        CURSOR=$#BUFFER         # move cursor
+        zle -R -c               # refresh
+    }
+
+    zle -N percol_select_history
+    bindkey '^R' percol_select_history
+fi
+# ==============================================================================
+# percol ppgrep ppkill function
+function ppgrep() {
+    if [[ $1 == "" ]]; then
+        PERCOL=percol
+    else
+        PERCOL="percol --query $1"
+    fi
+    ps aux | eval $PERCOL | awk '{ print $2 }'
+}
+
+function ppkill() {
+    if [[ $1 =~ "^-" ]]; then
+        QUERY=""            # options only
+    else
+        QUERY=$1            # with a query
+        [[ $# > 0 ]] && shift
+    fi
+    ppgrep $QUERY | xargs kill $*
+}
+# ==============================================================================
+# 进入目录并执行ls
+function chpwd(){
+    emulate -L zsh
+    ls -lh
+}
+
+# ==============================================================================
+# tmux配置
+alias tmuxv='bash /home/qiang/tmux.sh'
