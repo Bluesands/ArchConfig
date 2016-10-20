@@ -1,0 +1,150 @@
+" 设置leadmier
+let mapleader=";"
+let g:mapleader = ';'
+
+" 快速变换字母大小写
+inoremap <C-u> <esc>gUiwea
+
+" Ctrl-W 重新映射
+nmap gl <C-W>l
+nmap gj <C-W>j
+nmap gh <C-W>h
+nmap gk <C-W>k
+
+" 重新映射Esc键,快速回到normal模式
+imap jk <Esc>
+
+" 打开语法高亮
+let python3_highlight_all=1
+syntax enable 
+
+" 关闭侧边
+set go=
+
+" 关闭乌干达帮助信息
+set shortmess=atI
+
+ " 设置编码
+set fileencodings=utf-8,gb2312,gb18030,gbk,ucs-bom,cp936,latin1
+
+" 打开文件类型检测功能
+filetype on
+" 不同文件类型采用不同缩进
+filetype indent on
+" 允许使用插件
+filetype plugin on
+" 启动自动补全
+filetype plugin indent on
+
+" 关闭vi模式
+set nocp
+
+" 取消VI兼容，VI键盘模式不易用
+set nocompatible
+
+" 显示行号, 或set number
+set nu
+
+" 历史命令保存行数
+set history=5000
+
+" 每隔1s自动保存
+let autosave=1
+
+" 当文件被外部改变时自动读取
+set autoread
+
+" 取消自动备份及产生swp文件
+set nobackup
+set nowb
+set noswapfile
+
+" 设置 退出vim后，内容显示在终端屏幕, 可以用于查看和复制, 不需要可以去掉
+set t_ti= t_te=
+
+" 允许区域选择
+set selection=exclusive
+set selectmode=mouse,key
+
+" 高亮光标所在行
+set cursorline
+hi cursorline cterm=NONE ctermbg=darkred ctermfg=white
+
+" 状态栏显示当前执行的命令
+set showcmd
+
+" 左下角显示当前vim模式
+set showmode
+
+" 在上下移动光标时，光标的上下方都至少会保留显示的行数
+set scrolloff=7
+
+" 标尺功能，显示当前光标所在行列号
+set ruler
+
+" 高亮显示匹配的括号
+set showmatch
+
+" 在搜索的时候忽略大小写
+set ignorecase
+" 高亮被搜索的句子
+set hlsearch
+" 在搜索时，输入的词句的逐字符高亮（类似firefox的搜索）
+set incsearch
+
+" 继承前一行的缩进方式，特别适用于多行注释
+set autoindent
+" 自动缩进
+set smartindent
+" 制表符为4
+set tabstop=4
+" 统一缩进为4
+set softtabstop=4
+set shiftwidth=4
+set expandtab
+
+" 设置单行字符不超过80
+set colorcolumn=81
+set textwidth=80
+set fo+=mB
+
+" 主题设置
+set background=dark
+colorscheme solarized
+
+" 允许使用退格键，或set backspace=2
+set backspace=eol,start,indent
+set whichwrap+=<,>,h,l
+
+" 在被分割的窗口间显示空白，便于阅读
+set fillchars=vert:\ ,stl:\ ,stlnc:\
+
+" 基于缩进或标识进行代码折叠
+" 一共有6中折叠方式，不同的折叠方式的快捷键不同
+set foldmethod=indent
+
+" 启动vim时关闭折叠
+" 快捷键：z+a, 打开或关闭当前折叠;  z+M, 关闭所有折叠;  z+R, 打开所有折叠
+set nofoldenable
+
+" 相对行号：行号变成相对，可以使用nj/nk 进行跳转
+set relativenumber number
+au FocusLost * :set norelativenumber number
+au FocusGained * :set relativenumber
+
+" 插入模式下用绝对行号, 普通模式下用相对
+autocmd InsertEnter * :set norelativenumber number
+autocmd InsertLeave * :set relativenumber
+function! NumberToggle()
+  if(&relativenumber == 1)
+     set norelativenumber number
+  else
+     set relativenumber
+  endif
+endfunc
+nnoremap <leader><leader>n :call NumberToggle()<cr>
+
+" ==============================================================================
+" jinjia2 html configure
+autocmd BufNewFile,BufRead */templates/*.html :set filetype=jinja
+autocmd FileType jinja :UltiSnipsAddFiletypes jinja2.html

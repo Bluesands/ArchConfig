@@ -1,0 +1,29 @@
+" ==============================================================================
+" install plugin 安装插件
+source ~/.vim/config/vimrc.bundle
+
+" ==============================================================================
+" 载入vim基础配置
+source ~/.vim/config/vimrc.base
+
+" ==============================================================================
+" 载入vim插件配置
+source ~/.vim/config/plugin_config/ag
+source ~/.vim/config/plugin_config/airline
+source ~/.vim/config/plugin_config/auto-pairs
+source ~/.vim/config/plugin_config/autopep8
+source ~/.vim/config/plugin_config/ctrlp
+source ~/.vim/config/plugin_config/easymotion
+source ~/.vim/config/plugin_config/indentline
+source ~/.vim/config/plugin_config/markdown
+source ~/.vim/config/plugin_config/multiple-cursors
+source ~/.vim/config/plugin_config/neocomplete
+source ~/.vim/config/plugin_config/nerdcommenter
+source ~/.vim/config/plugin_config/nerdtree-git
+source ~/.vim/config/plugin_config/nerdtree-tab
+source ~/.vim/config/plugin_config/nerdtree
+source ~/.vim/config/plugin_config/python-auto
+source ~/.vim/config/plugin_config/quick-scope
+source ~/.vim/config/plugin_config/syntastic
+source ~/.vim/config/plugin_config/tagbar
+source ~/.vim/config/plugin_config/ultisnips
