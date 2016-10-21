@@ -1,4 +1,0 @@
-" nerd commenter 快速注释
-let g:NERDSpaceDelims = 1
-let g:NERDAltDelims_python = 1
-map <F4> <leader>ci <CR>

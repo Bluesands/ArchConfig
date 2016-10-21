@@ -1,5 +1,0 @@
-" tagbar配置
-" 启动时自动focus
-let g:tagbar_autofocus=1
-" <F10>打开/关闭Tagbar
-nnoremap <silent> <F10> :TagbarToggle<CR>

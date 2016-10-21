@@ -1,4 +1,0 @@
-" auto-pairs设置
-" 自动补全括号和引号
-let g:AutoPairsFlyMode = 1 
-let g:AutoPairs = {'(':')', '[':']', '{':'}',"'":"'",'"':'"', '`':'`', '<':'>'} 
