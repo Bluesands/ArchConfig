@@ -1,2 +1,0 @@
-" ag 代码快速检索
-let g:ackprg = 'ag --nogroup --nocolor --column'

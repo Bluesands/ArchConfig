@@ -1,4 +1,4 @@
-" ==============================================================================
+"ultisnips ==============================================================================
 " install plugin 安装插件
 source ~/.vim/config/vimrc.bundle
 
@@ -17,7 +17,7 @@ source ~/.vim/config/plugin_config/easymotion
 source ~/.vim/config/plugin_config/indentline
 source ~/.vim/config/plugin_config/markdown
 source ~/.vim/config/plugin_config/multiple-cursors
-source ~/.vim/config/plugin_config/neocomplete
+" source ~/.vim/config/plugin_config/neocomplete
 source ~/.vim/config/plugin_config/nerdcommenter
 source ~/.vim/config/plugin_config/nerdtree-git
 source ~/.vim/config/plugin_config/nerdtree-tab
@@ -27,3 +27,4 @@ source ~/.vim/config/plugin_config/quick-scope
 source ~/.vim/config/plugin_config/syntastic
 source ~/.vim/config/plugin_config/tagbar
 source ~/.vim/config/plugin_config/ultisnips
+source ~/.vim/config/plugin_config/ycm

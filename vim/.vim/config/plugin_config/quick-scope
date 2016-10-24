@@ -1,3 +1,0 @@
-" unblevable/quick-scope 行内快速移动
-let g:qs_first_occurrence_highlight_color = 155
-let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
