@@ -1,4 +1,4 @@
-### The config of my desktop system Archlinxu
+### The config of my desktop system Archlinux
 #### Document describing
 
 + vim is the config of vim.
