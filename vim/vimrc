@@ -6,6 +6,9 @@ source ~/.vim/config/vimrc.bundle
 " 载入vim基础配置
 source ~/.vim/config/vimrc.base
 
+" 载入fcitx
+source ~/.vim/config/fcitx
+
 " ==============================================================================
 " 载入vim插件配置
 source ~/.vim/config/plugin_config/ag
