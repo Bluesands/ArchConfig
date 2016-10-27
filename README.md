@@ -1,4 +1,4 @@
-### The config of my desktop system Centos 7
+### The config of my desktop system Archlinxu
 #### Document describing
 
 + vim is the config of vim.
