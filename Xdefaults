@@ -27,10 +27,14 @@ URxvt.internalBorder:       3
 URxvt.lineSpace:            0
 
 ! Fonts
+URxvt.imLocale:             en_US.UTF-8
 URxvt.allow_bold:           false
 /* URxvt.font:                 -*-terminus-medium-r-normal-*-12-120-72-72-c-60-iso8859-1 */
-URxvt*font: xft:Monospace:pixelsize=14
-URxvt*boldFont: xft:Monospace:pixelsize=14
+URxvt*font: xft:Inconsolata for Powerline:pixelsize=18:antialias=True,xft:wqy-microhei:pixelsize=18
+URxvt*boldFont: xft:Inconsolata for Powerline:pixelsize=18:antialias=True,xft:wqy-microhei:pixelsize=18
+
+! URxvt with fcitx
+URxvt.inputMethod:fcitx
 
 ! Fix font space
 URxvt*letterSpace: -1
@@ -42,12 +46,13 @@ URxvt.scrollBar:            false
 ! Perl extensions
 URxvt.perl-ext-common:      default,matcher
 URxvt.matcher.button:       1
-URxvt.urlLauncher:          firefox
+URxvt.urlLauncher:          chromium
 
 ! Cursor
 URxvt.cursorBlink:          true
 URxvt.cursorColor:          #657b83
 URxvt.cursorUnderline:      false
+URxvt.saveLines:            3000
 
 ! Pointer
 URxvt.pointerBlank:         true
@@ -56,40 +61,55 @@ URxvt.pointerBlank:         true
 
 *background: #002b36
 *foreground: #657b83
-!!*fading: 40
+*fading: 40
 *fadeColor: #002b36
 *cursorColor: #93a1a1
 *pointerColorBackground: #586e75
 *pointerColorForeground: #93a1a1
 
-!! black dark/light
+! black dark/light
 *color0: #073642
 *color8: #002b36
 
-!! red dark/light
+! red dark/light
 *color1: #dc322f
 *color9: #cb4b16
 
-!! green dark/light
+! green dark/light
 *color2: #859900
 *color10: #586e75
 
-!! yellow dark/light
+! yellow dark/light
 *color3: #b58900
 *color11: #657b83
 
-!! blue dark/light
+! blue dark/light
 *color4: #268bd2
 *color12: #839496
 
-!! magenta dark/light
+! magenta dark/light
 *color5: #d33682
 *color13: #6c71c4
 
-!! cyan dark/light
+! cyan dark/light
 *color6: #2aa198
 *color14: #93a1a1
 
-!! white dark/light
+! white dark/light
 *color7: #eee8d5
 *color15: #fdf6e3
+
+!!中括号内数表示透明度
+URxvt.inheritPixmap:true
+! URxvt.background:#000000
+! URxvt.foreground:#ffffff
+! URxvt.colorBD:Gray
+! URxvt.colorUL:Green
+! URxvt.color:Red
+! URxvt.color:RoyalBlue
+! URxvt.color:Magenta
+! URxvt.color:Gray
+! URxvt.color:Green
+! URxvt.color:DodgerBlue
+! URxvt.color:Cyan
+! URxvt.color:Gray
