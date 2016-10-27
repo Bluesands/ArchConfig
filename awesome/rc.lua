@@ -38,7 +38,7 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init("/home/qiang/.config/awesome/themes/powerarrow-darker/theme.lua")
+beautiful.init("/home/qiang/.config/awesome/themes/copland/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 -- change the default termainal and editor
@@ -84,7 +84,7 @@ end
 tags = {}
 for s = 1, screen.count() do
     -- Each screen has its own tag table.
-    tags[s] = awful.tag({ '[Term]', '[Internet]', '[Code]', '[File]', 5, 6, 7, 8, 9 }, s, layouts[1])
+    tags[s] = awful.tag({ 'Term', 'Internet', 'Code', 'File', 'Music'}, s, layouts[1])
 end
 -- }}}
 
@@ -97,13 +97,12 @@ myawesomemenu = {
    { "quit", awesome.quit }
 }
 
+
 mymainmenu = awful.menu({ items = {
     { "awesome", myawesomemenu, beautiful.awesome_icon },
-    { "open terminal", terminal },
+    { "Terminal", terminal },
     { "Chromium", "chromium" },
-    { "Vim", "vim" },
-    { "Pcmanfm", "pcmanfm" },
-    { "Log out", "gksu 'shutdown -h now'" },
+    { "Firefox", "firefox" },
   }
  })
 
