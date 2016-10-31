@@ -18,8 +18,14 @@ imap jk <Esc>
 let python3_highlight_all=1
 syntax enable 
 
+" 设之字体
+" set guifont=Inconsolata\ for\ Powerline
+set guifont=Monaco\ for\ Powerline
+
 " 关闭侧边
 set go=
+
+set t_Co=256
 
 " 关闭乌干达帮助信息
 set shortmess=atI
@@ -148,3 +154,7 @@ nnoremap <leader><leader>n :call NumberToggle()<cr>
 " jinjia2 html configure
 autocmd BufNewFile,BufRead */templates/*.html :set filetype=jinja
 autocmd FileType jinja :UltiSnipsAddFiletypes jinja2.html
+
+" ==============================================================================
+" format json
+map <leader>j:%!python -m json.tools<CR>
