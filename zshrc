@@ -5,8 +5,8 @@
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-# ZSH_THEME="avit"
-ZSH_THEME="bullet-train"
+ZSH_THEME="avit"
+# ZSH_THEME="bullet-train"
 # ZSH_THEME="powerline"
 
 # Uncomment the following line to use case-sensitive completion.
@@ -199,3 +199,7 @@ function chpwd(){
 # tmux配置
 alias tmuxv='bash /home/qiang/tmux.sh'
 # ==============================================================================
+# 制定python虚拟环境路径
+export WORKON_HOME=~/Job/Envs
+export PROJECT_HOME=~/Job/Envs/Projects
+source /usr/bin/virtualenvwrapper.sh
