@@ -94,36 +94,30 @@ alias la='ls -al'
 alias lh='ls -alh'
 # grep 自动多色
 alias grep="grep --color=auto"
-# 解压命令，使用zsh z插件就不需要了
-# alias gz='sudo tar -xzvf'
-# alias bz='sudo tar -xjvf'
-# alias xz='sudo xz -d'
-# 
+
 # 远程ssh登陆阿里云服务器
-alias aliyun='ssh 'root@120.76.73.209''
+alias aliyun='TERM=xterm ssh 'root@120.76.73.209''
+# ssh登陆内网服务器
+alias dms='ssh 'root@192.168.199.131''
 
 # python3.5 pip package from pypi.douban.com
 alias py3='sudo pip3 install $1 -i http://pypi.douban.com/simple --trusted-host pypi.douban.com'
 
-# ssh登陆内网服务器
-alias dms='ssh 'root@192.168.199.131''
 
 # 查看文件内容，去除空行、# 注释、;注释内容
 alias ge='sudo grep -Ev "^($|#|;)" $1'
 
-# 打开文件夹
-alias o='nautilus $1'
-
 # 查询某个软件是否在运行
-alias pg='ps -aux|grep $1'
+alias pf='ps -aux|fzf'
 # 查询端口是否被占用
-alias portcheck='sudo netstat -pan|grep $1'
+alias portcheck='sudo netstat -pan|fzf'
 
+# ==============================================================================
 # nginx 开启，重启，关闭
 alias nginxstart='sudo systemctl start nginx'
 alias nginxreload='sudo systemctl reload nginx'
 alias nginxstop='sudo systemctl stop nginx'
-
+# ==============================================================================
 # docker command
 # 杀死所有正在运行的容器
 alias dockerkall='sudo docker kill `sudo docker ps -qf status=running`'
@@ -145,56 +139,11 @@ alias dockerdeletei='sudo docker rmi $1'
 
 # docker加速器
 [ -f ~/.bashrc_docker ] && . ~/.bashrc_docker
-
+# ==============================================================================
 # gossh
 alias gosshstart='sudo python /opt/shadowsocks/shadowsocks/local.py -c /etc/shadowsocks.json -d start'
 alias gosshstop='sudo python /opt/shadowsocks/shadowsocks/local.py -d stop'
 alias gosshrestart='sudo python /opt/shadowsocks/shadowsocks/local.py -d restart'
-
-
-# ==============================================================================
-# percol搜索增强
-function exists { which $1 &> /dev/null }
-
-if exists percol; then
-    function percol_select_history() {
-        local tac
-        exists gtac && tac="gtac" || { exists tac && tac="tac" || { tac="tail -r" } }
-        BUFFER=$(fc -l -n 1 | eval $tac | percol --query "$LBUFFER")
-        CURSOR=$#BUFFER         # move cursor
-        zle -R -c               # refresh
-    }
-
-    zle -N percol_select_history
-    bindkey '^R' percol_select_history
-fi
-# ==============================================================================
-# percol ppgrep ppkill function
-function ppgrep() {
-    if [[ $1 == "" ]]; then
-        PERCOL=percol
-    else
-        PERCOL="percol --query $1"
-    fi
-    ps aux | eval $PERCOL | awk '{ print $2 }'
-}
-
-function ppkill() {
-    if [[ $1 =~ "^-" ]]; then
-        QUERY=""            # options only
-    else
-        QUERY=$1            # with a query
-        [[ $# > 0 ]] && shift
-    fi
-    ppgrep $QUERY | xargs kill $*
-}
-# ==============================================================================
-# 进入目录并执行ls
-function chpwd(){
-    emulate -L zsh
-    ls -lh
-}
-
 # ==============================================================================
 # tmux配置
 alias tmuxv='bash /home/qiang/tmux.sh'
@@ -203,5 +152,7 @@ alias tmuxv='bash /home/qiang/tmux.sh'
 export WORKON_HOME=~/Job/Envs
 export PROJECT_HOME=~/Job/Envs/Projects
 source /usr/bin/virtualenvwrapper.sh
-
-source ~/.fzfrc
+# ==============================================================================
+# fzfrc配置文件
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f ~/.fzfrc ] && source ~/.fzfrc
