@@ -51,7 +51,7 @@ HIST_STAMPS="yyyy-mm-dd"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git ag htop ccat web-search wd last-working-dir extract z d docker)
+plugins=(git k ag htop ccat web-search wd last-working-dir extract z d docker)
 
 # User configuration
 
@@ -91,14 +91,10 @@ alias cls='clear'
 # ls 命令
 alias ll='ls -l'
 alias la='ls -al'
-alias lh='ls -alh'
+alias lh='ls -lh'
+alias lah='ls -alh'
 # grep 自动多色
 alias grep="grep --color=auto"
-
-# 远程ssh登陆阿里云服务器
-alias aliyun='TERM=xterm ssh 'root@120.76.73.209''
-# ssh登陆内网服务器
-alias dms='ssh 'root@192.168.199.131''
 
 # python3.5 pip package from pypi.douban.com
 alias py3='sudo pip3 install $1 -i http://pypi.douban.com/simple --trusted-host pypi.douban.com'
@@ -156,3 +152,24 @@ source /usr/bin/virtualenvwrapper.sh
 # fzfrc配置文件
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [ -f ~/.fzfrc ] && source ~/.fzfrc
+
+# ==============================================================================
+# 增加thefuck插件
+eval "$(thefuck --alias)"
+
+# ==============================================================================
+# pyenv
+export PYENV_ROOT="${HOME}/.pyenv"
+
+if [ -d "${PYENV_ROOT}" ]; then
+  export PATH="${PYENV_ROOT}/bin:${PATH}"
+  eval "$(pyenv init -)"
+fi
+
+# ==============================================================================
+# add the most env
+export PAGER="/usr/bin/most -s"
+# ==============================================================================
+# add the conf of less to color
+export LESS='-R'
+export LESSOPEN='|~/.lessfilter %s'
