@@ -11,23 +11,25 @@ source ~/.vim/config/fcitx
 
 " ==============================================================================
 " 载入vim插件配置
-source ~/.vim/config/plugin_config/ag
-source ~/.vim/config/plugin_config/airline
-source ~/.vim/config/plugin_config/auto-pairs
-source ~/.vim/config/plugin_config/autopep8
-source ~/.vim/config/plugin_config/ctrlp
-source ~/.vim/config/plugin_config/easymotion
-source ~/.vim/config/plugin_config/indentline
-source ~/.vim/config/plugin_config/markdown
-source ~/.vim/config/plugin_config/multiple-cursors
-" source ~/.vim/config/plugin_config/neocomplete
-source ~/.vim/config/plugin_config/nerdcommenter
-source ~/.vim/config/plugin_config/nerdtree-git
-source ~/.vim/config/plugin_config/nerdtree-tab
-source ~/.vim/config/plugin_config/nerdtree
-source ~/.vim/config/plugin_config/python-auto
-source ~/.vim/config/plugin_config/quick-scope
-source ~/.vim/config/plugin_config/syntastic
-source ~/.vim/config/plugin_config/tagbar
-source ~/.vim/config/plugin_config/ultisnips
-source ~/.vim/config/plugin_config/ycm
+source ~/.vim/config/plugin_config/ag.vim
+source ~/.vim/config/plugin_config/airline.vim
+source ~/.vim/config/plugin_config/auto-pairs.vim
+source ~/.vim/config/plugin_config/autopep8.vim
+source ~/.vim/config/plugin_config/ctrlp.vim
+source ~/.vim/config/plugin_config/easymotion.vim
+source ~/.vim/config/plugin_config/indentline.vim
+source ~/.vim/config/plugin_config/markdown.vim
+source ~/.vim/config/plugin_config/multiple-cursors.vim
+" source ~/.vim/config/plugin_config/neocomplete.vim
+source ~/.vim/config/plugin_config/nerdcommenter.vim
+source ~/.vim/config/plugin_config/nerdtree-git.vim
+source ~/.vim/config/plugin_config/nerdtree-tab.vim
+source ~/.vim/config/plugin_config/nerdtree.vim
+source ~/.vim/config/plugin_config/python-auto.vim
+source ~/.vim/config/plugin_config/quick-scope.vim
+source ~/.vim/config/plugin_config/syntastic.vim
+source ~/.vim/config/plugin_config/tagbar.vim
+source ~/.vim/config/plugin_config/ultisnips.vim
+source ~/.vim/config/plugin_config/ycm.vim
+source ~/.vim/config/plugin_config/cscope_maps.vim
+" source ~/.vim/config/plugin_config/vimwiki.vim
