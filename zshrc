@@ -96,6 +96,18 @@ alias lah='ls -alh'
 # grep 自动多色
 alias grep="grep --color=auto"
 
+# 重新载入终端
+alias zshrestart='exec $SHELL -l'
+
+# 终端打开emacs
+alias emacs='emacs -nw'
+
+# 远程ssh登陆阿里云服务器
+alias aliyun='TERM=xterm ssh 'root@120.76.73.209''
+alias aliyunv='TERM=xterm ssh 'vsftpd@120.76.73.209''
+# ssh登陆内网服务器
+alias dms='ssh 'root@192.168.199.131''
+
 # python3.5 pip package from pypi.douban.com
 alias py3='sudo pip3 install $1 -i http://pypi.douban.com/simple --trusted-host pypi.douban.com'
 
@@ -106,7 +118,22 @@ alias ge='sudo grep -Ev "^($|#|;)" $1'
 # 查询某个软件是否在运行
 alias pf='ps -aux|fzf'
 # 查询端口是否被占用
-alias portcheck='sudo netstat -pan|fzf'
+alias portcheck='netstat -pan|fzf'
+
+# 创建并进入文件夹
+function mkcd
+{
+    command mkdir $1 && cd $1
+}
+# 创建多级目录并进入
+function mkpcd
+{
+    command mkdir -p $1 && cd $1
+}
+
+# copy text from linux terminal(stdin) to the system clipboard
+alias pbcopy='xclip -selection clipboard'
+alias pbpaste='xclip -selection clipboard -o'
 
 # ==============================================================================
 # nginx 开启，重启，关闭
@@ -165,7 +192,6 @@ if [ -d "${PYENV_ROOT}" ]; then
   export PATH="${PYENV_ROOT}/bin:${PATH}"
   eval "$(pyenv init -)"
 fi
-
 # ==============================================================================
 # add the most env
 export PAGER="/usr/bin/most -s"
@@ -173,3 +199,9 @@ export PAGER="/usr/bin/most -s"
 # add the conf of less to color
 export LESS='-R'
 export LESSOPEN='|~/.lessfilter %s'
+# ==============================================================================
+# 增加node环境变量
+export PATH="/opt/node-v6.9.1-linux-x64/bin:$PATH"
+
+# cheat 语法高亮
+export CHEATCOLORS=true
