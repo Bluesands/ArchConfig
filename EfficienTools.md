@@ -14,7 +14,8 @@
 + emacs
 + oh-my-zsh
 + git
-
++ zathura
++ feh
 
 ##### Terminal Software
 + ranger
