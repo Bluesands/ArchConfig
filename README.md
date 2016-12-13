@@ -11,3 +11,4 @@
 + fzfrc is the config of fzf used in zsh. 
 + lessfilter is the config of command less to let it color.
 + mostrc is the config of command most to let command man color.
++ emacs folder is the config of emacs.
