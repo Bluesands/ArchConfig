@@ -16,6 +16,7 @@
 + git
 + zathura
 + feh
++ screenfetch
 
 ##### Terminal Software
 + ranger
