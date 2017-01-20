@@ -9,6 +9,7 @@ fd() {
 
 # ==============================================================================
 # fda - including hidden directories
+# 进入所选文件包含隐藏文件夹
 fda() {
   local dir
   dir=$(find ${1:-.} -type d 2> /dev/null | fzf +m) && cd "$dir"
