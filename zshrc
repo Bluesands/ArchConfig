@@ -69,8 +69,6 @@ source $ZSH/oh-my-zsh.sh
 # else
 #   export EDITOR='mvim'
 # fi
-# 将emacs作为默认编辑器
-export EDITOR='emacs'
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -101,6 +99,8 @@ alias grep="grep --color=auto"
 # 重新载入终端
 alias zshrestart='exec $SHELL -l'
 
+# 终端打开emacs
+# alias emacs='emacs -nw'
 
 # 远程ssh登陆阿里云服务器
 alias aliyun='TERM=xterm ssh 'root@120.76.73.209''
@@ -110,7 +110,7 @@ alias dms='TERM=xterm ssh 'root@10.1.1.234''
 
 # python3.5 pip package from pypi.douban.com
 alias py3='sudo pip install $1 -i http://pypi.douban.com/simple --trusted-host pypi.douban.com'
-alias piplist='pip list --format=columns'
+
 
 # 查看文件内容，去除空行、# 注释、;注释内容
 alias ge='sudo grep -Ev "^($|#|;)" $1'
@@ -143,25 +143,25 @@ alias nginxstop='sudo systemctl stop nginx'
 # ==============================================================================
 # docker command
 # 杀死所有正在运行的容器
-# alias dockerkall='sudo docker kill `sudo docker ps -qf status=running`'
+alias dockerkall='sudo docker kill `sudo docker ps -qf status=running`'
 # 删除所有已经停止的容器
-# alias dockercleanc='sudo docker rm `sudo docker ps -qf status=exited`'
+alias dockercleanc='sudo docker rm `sudo docker ps -qf status=exited`'
 # 删除所有未dangling标签的镜像
-# alias dockercleani='sudo docker rmi `sudo docker images -qf dangling=true`'
+alias dockercleani='sudo docker rmi `sudo docker images -qf dangling=true`'
 # 删除所有已经停止的容器和未打标签的镜像
-# alias dockerclean='dockercleanc || true && dockercleani'
+alias dockerclean='dockercleanc || true && dockercleani'
 # 查看所有镜像
-# alias dockerimages='sudo docker images'
+alias dockerimages='sudo docker images'
 # 查看所有容器
-# alias dockercontainer='sudo docker ps -a'
+alias dockercontainer='sudo docker ps -a'
 
 # 删除停止并删除运行的容器
-# alias dockerstop='sudo docker stop $1'
-# alias dockerdeletec='sudo docker rm $1'
-# alias dockerdeletei='sudo docker rmi $1'
+alias dockerstop='sudo docker stop $1'
+alias dockerdeletec='sudo docker rm $1'
+alias dockerdeletei='sudo docker rmi $1'
 
 # docker加速器
-# [ -f ~/.bashrc_docker ] && . ~/.bashrc_docker
+[ -f ~/.bashrc_docker ] && . ~/.bashrc_docker
 # ==============================================================================
 # gossh
 alias gosshstart='sudo python /opt/shadowsocks/shadowsocks/local.py -c /etc/shadowsocks.json -d start'

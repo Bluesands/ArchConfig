@@ -51,7 +51,7 @@ run_once("urxvtd")
 run_once("unclutter -root")
 -- }}}
 
--- git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf{{{ Variable definitions
+-- {{{ Variable definitions
 
 -- beautiful init
 beautiful.init(os.getenv("HOME") .. "/.config/awesome/themes/holo/theme.lua")
