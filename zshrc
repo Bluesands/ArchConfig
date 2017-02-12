@@ -99,9 +99,6 @@ alias grep="grep --color=auto"
 # 重新载入终端
 alias zshrestart='exec $SHELL -l'
 
-# 终端打开emacs
-# alias emacs='emacs -nw'
-
 # pacman install/remove/search packages
 alias pacmaninstall='sudo pacman -S $1'
 alias pacmansearch='sudo pacman -Ss $1'
@@ -136,8 +133,8 @@ function mkpcd
 }
 
 # copy text from linux terminal(stdin) to the system clipboard
-alias pbcopy='xclip -selection clipboard'
-alias pbpaste='xclip -selection clipboard -o'
+# alias pbcopy='xclip -selection clipboard'
+# alias pbpaste='xclip -selection clipboard -o'
 
 # ==============================================================================
 # nginx 开启，重启，关闭
@@ -147,22 +144,22 @@ alias nginxstop='sudo systemctl stop nginx'
 # ==============================================================================
 # docker command
 # 杀死所有正在运行的容器
-alias dockerkall='sudo docker kill `sudo docker ps -qf status=running`'
+# alias dockerkall='sudo docker kill `sudo docker ps -qf status=running`'
 # 删除所有已经停止的容器
-alias dockercleanc='sudo docker rm `sudo docker ps -qf status=exited`'
+# alias dockercleanc='sudo docker rm `sudo docker ps -qf status=exited`'
 # 删除所有未dangling标签的镜像
-alias dockercleani='sudo docker rmi `sudo docker images -qf dangling=true`'
+# alias dockercleani='sudo docker rmi `sudo docker images -qf dangling=true`'
 # 删除所有已经停止的容器和未打标签的镜像
-alias dockerclean='dockercleanc || true && dockercleani'
+# alias dockerclean='dockercleanc || true && dockercleani'
 # 查看所有镜像
-alias dockerimages='sudo docker images'
+# alias dockerimages='sudo docker images'
 # 查看所有容器
-alias dockercontainer='sudo docker ps -a'
+# alias dockercontainer='sudo docker ps -a'
 
 # 删除停止并删除运行的容器
-alias dockerstop='sudo docker stop $1'
-alias dockerdeletec='sudo docker rm $1'
-alias dockerdeletei='sudo docker rmi $1'
+# alias dockerstop='sudo docker stop $1'
+# alias dockerdeletec='sudo docker rm $1'
+# alias dockerdeletei='sudo docker rmi $1'
 
 # docker加速器
 [ -f ~/.bashrc_docker ] && . ~/.bashrc_docker
@@ -173,7 +170,7 @@ alias gosshstop='sudo python /opt/shadowsocks/shadowsocks/local.py -d stop'
 alias gosshrestart='sudo python /opt/shadowsocks/shadowsocks/local.py -d restart'
 # ==============================================================================
 # tmux配置
-alias tmuxv='bash /home/qiang/tmux.sh'
+# alias tmuxv='bash /home/qiang/tmux.sh'
 # ==============================================================================
 # 制定python虚拟环境路径
 export WORKON_HOME=~/Job/Envs
