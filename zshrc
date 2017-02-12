@@ -5,9 +5,9 @@
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="avit"
+# ZSH_THEME="avit"
 # ZSH_THEME="bullet-train"
-# ZSH_THEME="powerline"
+ZSH_THEME="powerline"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -102,11 +102,12 @@ alias zshrestart='exec $SHELL -l'
 # 终端打开emacs
 # alias emacs='emacs -nw'
 
-# 远程ssh登陆阿里云服务器
-alias aliyun='TERM=xterm ssh 'root@120.76.73.209''
-alias aliyunv='TERM=xterm ssh 'vsftpd@120.76.73.209''
-# ssh登陆内网服务器
-alias dms='TERM=xterm ssh 'root@10.1.1.234''
+# pacman install/remove/search packages
+alias pacmaninstall='sudo pacman -S $1'
+alias pacmansearch='sudo pacman -Ss $1'
+alias pacmanremove='sudo pacman -Rs $1'
+alias pacmanupdate='sudo pacman -Suy'
+
 
 # python3.5 pip package from pypi.douban.com
 alias py3='sudo pip install $1 -i http://pypi.douban.com/simple --trusted-host pypi.douban.com'
@@ -119,6 +120,9 @@ alias ge='sudo grep -Ev "^($|#|;)" $1'
 alias pf='ps -aux|fzf'
 # 查询端口是否被占用
 alias portcheck='netstat -pan|fzf'
+
+# pip list packages columns
+alias piplist='pip list --format=columns'
 
 # 创建并进入文件夹
 function mkcd
@@ -201,7 +205,7 @@ export LESS='-R'
 export LESSOPEN='|~/.lessfilter %s'
 # ==============================================================================
 # 增加node环境变量
-export PATH="/opt/node-v6.9.1-linux-x64/bin:$PATH"
+# export PATH="/opt/node-v6.9.1-linux-x64/bin:$PATH"
 
 # cheat 语法高亮
 export CHEATCOLORS=true
