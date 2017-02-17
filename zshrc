@@ -101,12 +101,12 @@ alias grep="grep --color=auto"
 # 重新载入终端
 alias zshrestart='exec $SHELL -l'
 
+# pacman install/remove/search packages
+alias pacmaninstall='sudo pacman -S $1'
+alias pacmansearch='sudo pacman -Ss $1'
+alias pacmanremove='sudo pacman -Rs $1'
+alias pacmanupdate='sudo pacman -Suy'
 
-# 远程ssh登陆阿里云服务器
-alias aliyun='TERM=xterm ssh 'root@120.76.73.209''
-alias aliyunv='TERM=xterm ssh 'vsftpd@120.76.73.209''
-# ssh登陆内网服务器
-alias dms='TERM=xterm ssh 'root@10.1.1.234''
 
 # python3.5 pip package from pypi.douban.com
 alias py3='sudo pip install $1 -i http://pypi.douban.com/simple --trusted-host pypi.douban.com'
@@ -120,6 +120,9 @@ alias pf='ps -aux|fzf'
 # 查询端口是否被占用
 alias portcheck='netstat -pan|fzf'
 
+# pip list packages columns
+alias piplist='pip list --format=columns'
+
 # 创建并进入文件夹
 function mkcd
 {
@@ -132,8 +135,8 @@ function mkpcd
 }
 
 # copy text from linux terminal(stdin) to the system clipboard
-alias pbcopy='xclip -selection clipboard'
-alias pbpaste='xclip -selection clipboard -o'
+# alias pbcopy='xclip -selection clipboard'
+# alias pbpaste='xclip -selection clipboard -o'
 
 # ==============================================================================
 # nginx 开启，重启，关闭
@@ -169,7 +172,7 @@ alias gosshstop='sudo python /opt/shadowsocks/shadowsocks/local.py -d stop'
 alias gosshrestart='sudo python /opt/shadowsocks/shadowsocks/local.py -d restart'
 # ==============================================================================
 # tmux配置
-alias tmuxv='bash /home/qiang/tmux.sh'
+# alias tmuxv='bash /home/qiang/tmux.sh'
 # ==============================================================================
 # 制定python虚拟环境路径
 export WORKON_HOME=~/Job/Envs
