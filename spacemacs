@@ -16,7 +16,8 @@ values."
    ;; and `nil'. `unused' will lazy install only unused layers (i.e. layers
    ;; not listed in variable `dotspacemacs-configuration-layers'), `all' will
    ;; lazy install any layer that support lazy installation even the layers
-   ;; listed in `dotspacemacs-configuration-layers'. `nil' /* @licstart The following is the entire license notice for the JavaScript code in this tag. Copyright (C) 2012-2013 Free Software Foundation, Inc. The JavaScript code in this tag is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License (GNU GPL) as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version. The code is distributed WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU GPL for more details. As additional permission under GNU GPL version 3 section 7, you may distribute non-source (e.g., minimized or compacted) forms of that code without the copy of the GNU GPL normally required by section 4, provided you include this license notice and a URL through which recipients can access the Corresponding Source. @licend The above is the entire license notice for the JavaScript code in this tag. */ disable the lazy
+   ;; listed in `dotspacemacs-configuration-layers'. `nil' /* @licstart The following is the entire license notice for the JavaScript code in this tag. Copyright (C) 2012-2013 Free Software Foundation, Inc. The JavaScript code in this tag is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License (GNU GPL) as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version. The code is distributed WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU GPL for more details. As additional permission under GNU GPL version 3 section 7, you may distribute non-source (
+   javascripte.g., minimized or compacted) forms of that code without the copy of the GNU GPL normally required by section 4, provided you include this license notice and a URL through which recipients can access the Corresponding Source. @licend The above is the entire license notice for the JavaScript code in this tag. */ disable the lazy
    ;; installation feature and you have to explicitly list a layer in the
    ;; variable `dotspacemacs-configuration-layers' to install it.
    ;; (default 'unused)
@@ -31,13 +32,12 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
-     html
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
-     helm
+     ;; helm
      smex
      ivy
      (auto-completion :variables
@@ -65,6 +65,7 @@ values."
              )
      ipython-notebook
      sql
+     html
 
      (spell-checking :variables
                      spell-checking-enable-by-default nil
@@ -376,24 +377,7 @@ you should place your code here."
            :html-head "<link rel=\"stylesheet\" title=\"Standard\" href=\"/style/worg.css\" type=\"text/css\" />
 <link rel=\"alternate stylesheet\" title=\"Zenburn\" href=\"/style/worg-zenburn.css\" type=\"text/css\" />
 <link rel=\"alternate stylesheet\" title=\"Classic\" href=\"/style/worg-classic.css\" type=\"text/css\" />"
-           :html-preamble "<script type="text/javascript">
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-7691209-1']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-
-  document.addEventListener('DOMContentLoaded',function() {
-      document.getElementById("table-of-contents").onclick = function() {
-          var elem = document.getElementById("text-table-of-contents");
-          elem.style.display = elem.style.display == "block" ? "none" : "block";
-      }
-  });
-</script>"
+           :html-preamble "./style/js/content.js"
            :html-postamble "<div id='disqus_thread'></div>
                 <script type='text/javascript'>
                     /* * * CONFIGURATION VARIABLES * * */
@@ -424,7 +408,7 @@ you should place your code here."
 
   ;; Do not write anything past this comment. This is where Emacs will
   ;; auto-generate custom variable definitions.
-  
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -437,7 +421,7 @@ you should place your code here."
  '(fci-rule-color "#073642" t)
  '(package-selected-packages
    (quote
-    (wgrep ivy web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode helm-css-scss haml-mode emmet-mode company-web web-completion-data smex monokai-theme flyspell-popup company-quickhelp ein websocket rainbow-mode rainbow-identifiers color-identifiers-mode ranger sql-indent yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode helm-pydoc cython-mode company-anaconda anaconda-mode pythonic youdao-dictionary names chinese-word-at-point smeargle pangu-spacing orgit mmm-mode markdown-toc markdown-mode magit-gitflow helm-gtags helm-gitignore gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gh-md ggtags find-by-pinyin-dired evil-magit magit magit-popup git-commit with-editor diff-hl chinese-pyim chinese-pyim-basedict ace-pinyin pinyinlib ace-jump-mode mwim xterm-color shell-pop org-projectile org-present org org-pomodoro alert log4e gntp org-download multi-term htmlize helm-company helm-c-yasnippet gnuplot flyspell-correct-helm flyspell-correct flycheck-pos-tip pos-tip flycheck eshell-z eshell-prompt-extras esh-help company-statistics company auto-yasnippet yasnippet auto-dictionary ac-ispell auto-complete org-plus-contrib ws-butler window-numbering which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide ido-vertical-mode hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump f s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed dash aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async quelpa package-build spacemacs-theme)))
+    (ivy-hydra flyspell-correct-ivy counsel-projectile counsel swiper wgrep ivy web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode helm-css-scss haml-mode emmet-mode company-web web-completion-data smex monokai-theme flyspell-popup company-quickhelp ein websocket rainbow-mode rainbow-identifiers color-identifiers-mode ranger sql-indent yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode helm-pydoc cython-mode company-anaconda anaconda-mode pythonic youdao-dictionary names chinese-word-at-point smeargle pangu-spacing orgit mmm-mode markdown-toc markdown-mode magit-gitflow helm-gtags helm-gitignore gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gh-md ggtags find-by-pinyin-dired evil-magit magit magit-popup git-commit with-editor diff-hl chinese-pyim chinese-pyim-basedict ace-pinyin pinyinlib ace-jump-mode mwim xterm-color shell-pop org-projectile org-present org org-pomodoro alert log4e gntp org-download multi-term htmlize helm-company helm-c-yasnippet gnuplot flyspell-correct-helm flyspell-correct flycheck-pos-tip pos-tip flycheck eshell-z eshell-prompt-extras esh-help company-statistics company auto-yasnippet yasnippet auto-dictionary ac-ispell auto-complete org-plus-contrib ws-butler window-numbering which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide ido-vertical-mode hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump f s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed dash aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async quelpa package-build spacemacs-theme)))
  '(vc-annotate-background nil)
  '(vc-annotate-color-map
    (quote
@@ -460,7 +444,7 @@ you should place your code here."
      (340 . "#dc322f")
      (360 . "#cb4b16"))))
  '(vc-annotate-very-old-color nil))
-  
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
