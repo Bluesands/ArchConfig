@@ -16,8 +16,7 @@ values."
    ;; and `nil'. `unused' will lazy install only unused layers (i.e. layers
    ;; not listed in variable `dotspacemacs-configuration-layers'), `all' will
    ;; lazy install any layer that support lazy installation even the layers
-   ;; listed in `dotspacemacs-configuration-layers'. `nil' /* @licstart The following is the entire license notice for the JavaScript code in this tag. Copyright (C) 2012-2013 Free Software Foundation, Inc. The JavaScript code in this tag is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License (GNU GPL) as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version. The code is distributed WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU GPL for more details. As additional permission under GNU GPL version 3 section 7, you may distribute non-source (
-   javascripte.g., minimized or compacted) forms of that code without the copy of the GNU GPL normally required by section 4, provided you include this license notice and a URL through which recipients can access the Corresponding Source. @licend The above is the entire license notice for the JavaScript code in this tag. */ disable the lazy
+   ;; listed in `dotspacemacs-configuration-layers'. `nil' disable the lazy
    ;; installation feature and you have to explicitly list a layer in the
    ;; variable `dotspacemacs-configuration-layers' to install it.
    ;; (default 'unused)
@@ -353,7 +352,7 @@ you should place your code here."
   (setq python-shell-interpreter "ipython")
 
   ;; spacemacs can be used as the $EDITOR for editing git commits messages.
-  (global-git-commit-mode t)
+  ;; (global-git-commit-mode t)
 
   ;; set the cursor to bar
   (setq-default evil-insert-state-cursor 'bar)
