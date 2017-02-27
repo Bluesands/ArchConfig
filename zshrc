@@ -211,3 +211,8 @@ export CHEATCOLORS=true
 
 # Additionally you should define GTAGSLABEL in .zshrc
 export GTAGSLABEL=pygments
+
+
+# Add node path
+export NODE_HOME="/opt/node-v6.10.0-linux-x64"
+export PATH="${NODE_HOME}/bin:${PATH}"
