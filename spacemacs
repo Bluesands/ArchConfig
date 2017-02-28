@@ -93,9 +93,7 @@ values."
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
-   dotspacemacs-excluded-packages '(
-                                    org-plus-contrib
-                                    )
+   dotspacemacs-excluded-packages '(org-plus-contrib)
    ;; Defines the behaviour of Spacemacs when installing packages.
    ;; Possible values are `used-only', `used-but-keep-unused' and `all'.
    ;; `used-only' installs only explicitly used packages and uninstall any
@@ -338,6 +336,10 @@ before packages are loaded. If you are unsure, you should try in setting them in
   ;; hungry-delete
   (add-hook 'prog-mode-hook 'spacemacs/toggle-hungry-delete-on)
 
+  ;; Add node path
+  (setenv "PATH" (concat (getenv "PATH") ":/opt/node-v6.10.0-linux-x64/bin"))
+  (setq exec-path (append exec-path '("/opt/node-v6.10.0-linux-x64/bin")))
+
 )
 
 (defun dotspacemacs/user-config ()
@@ -363,12 +365,14 @@ you should place your code here."
 
   ;; org-mode configuration
   (org-babel-do-load-languages
-   'org-babel-load-languages
-   '(
-     (python . t)
-     (shell . t)
-     (emacs-lisp . t)
-     ))
+    'org-babel-load-languages
+    '(
+      (python . t)
+      (shell . t)
+      (emacs-lisp . t)
+      (js . t)
+      )
+    )
 
   (setq org-publish-project-alist
         '(
@@ -382,7 +386,7 @@ you should place your code here."
            :auto-sitemap t                  ; Generate sitemap.org automagically...
            :sitemap-filename "sitemap.org"  ; ... call it sitemap.org (it's the default)...
            :sitemap-title "Sitemap"         ; ... with title 'Sitemap'.
-           :with-creator nil                ; Disable the inclusion of "Created by Org" in the postamble.
+           :with-creator t
            :with-email nil                  ; Disable the inclusion of "(your email)" in the postamble.
            :with-author nil                 ; Enable the inclusion of "Author: Your Name" in the postamble.
            :auto-preamble t                 ; Enable auto preamble
@@ -394,14 +398,15 @@ you should place your code here."
            :toc-levels 2                    ; Just the default for this project.
            :html-head-include-default-style nil ;Disable the default css style
            :html-head-include-scripts nil ;Disable the default javascript snippet
-           :html-head "<link rel=\"stylesheet\" title=\"Standard\" href=\"/style/worg.css\" type=\"text/css\" />
-<link rel=\"alternate stylesheet\" title=\"Zenburn\" href=\"/style/worg-zenburn.css\" type=\"text/css\" />
-<link rel=\"alternate stylesheet\" title=\"Classic\" href=\"/style/worg-classic.css\" type=\"text/css\" />"
+
+           :html-head "<link rel=\"stylesheet\" title=\"Standard\" href=\"/worg/style/worg.css\" type=\"text/css\" />
+<link rel=\"alternate stylesheet\" title=\"Zenburn\" href=\"/worg/style/worg-zenburn.css\" type=\"text/css\" />
+<link rel=\"alternate stylesheet\" title=\"Classic\" href=\"/worg/style/worg-classic.css\" type=\"text/css\" />"
+           :html-postamble ,(with-temp-buffer (insert-file-contents "/home/emacs/git/worg/preamble.html") (buffer-string))
            :html-postamble "<div id='disqus_thread'></div>
                 <script type='text/javascript'>
                     /* * * CONFIGURATION VARIABLES * * */
                     var disqus_shortname = 'callmesanye';
-
                     /* * * DON'T EDIT BELOW THIS LINE * * */
                     (function() {
                         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
@@ -412,7 +417,8 @@ you should place your code here."
                 <noscript>Please enable JavaScript to view the <a href='https://disqus.com/?ref_noscript' rel='nofollow'>comments powered by Disqus.</a></noscript>
                 <p> Created by %c </p>
                 <a href='#' class='back-to-top' id='fixed-back-to-top' style='display: inline;'></a>"
-            )
+          )
+
             ("blog-static"
             :base-directory "/home/qiang/Bluesands.github.io/org/static/"
             :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf"
@@ -440,7 +446,7 @@ you should place your code here."
  '(fci-rule-color "#073642" t)
  '(package-selected-packages
    (quote
-    (web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc company-tern dash-functional tern coffee-mode org-plus-contrib ivy-hydra flyspell-correct-ivy counsel-projectile counsel swiper wgrep ivy web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode helm-css-scss haml-mode emmet-mode company-web web-completion-data smex monokai-theme flyspell-popup company-quickhelp ein websocket rainbow-mode rainbow-identifiers color-identifiers-mode ranger sql-indent yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode helm-pydoc cython-mode company-anaconda anaconda-mode pythonic youdao-dictionary names chinese-word-at-point smeargle pangu-spacing orgit mmm-mode markdown-toc markdown-mode magit-gitflow helm-gtags helm-gitignore gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gh-md ggtags find-by-pinyin-dired evil-magit magit magit-popup git-commit with-editor diff-hl chinese-pyim chinese-pyim-basedict ace-pinyin pinyinlib ace-jump-mode mwim xterm-color shell-pop org-projectile org-present org org-pomodoro alert log4e gntp org-download multi-term htmlize helm-company helm-c-yasnippet gnuplot flyspell-correct-helm flyspell-correct flycheck-pos-tip pos-tip flycheck eshell-z eshell-prompt-extras esh-help company-statistics company auto-yasnippet yasnippet auto-dictionary ac-ispell auto-complete ws-butler window-numbering which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide ido-vertical-mode hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump f s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed dash aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async quelpa package-build spacemacs-theme)))
+    (orgit org-present org org-pomodoro org-download org-bullets web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc company-tern dash-functional tern coffee-mode ivy-hydra flyspell-correct-ivy counsel-projectile counsel swiper wgrep ivy web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode helm-css-scss haml-mode emmet-mode company-web web-completion-data smex monokai-theme flyspell-popup company-quickhelp ein websocket rainbow-mode rainbow-identifiers color-identifiers-mode ranger sql-indent yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode helm-pydoc cython-mode company-anaconda anaconda-mode pythonic youdao-dictionary names chinese-word-at-point smeargle pangu-spacing mmm-mode markdown-toc markdown-mode magit-gitflow helm-gtags helm-gitignore gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gh-md ggtags find-by-pinyin-dired evil-magit magit magit-popup git-commit with-editor diff-hl chinese-pyim chinese-pyim-basedict ace-pinyin pinyinlib ace-jump-mode mwim xterm-color shell-pop org-projectile alert log4e gntp multi-term htmlize helm-company helm-c-yasnippet gnuplot flyspell-correct-helm flyspell-correct flycheck-pos-tip pos-tip flycheck eshell-z eshell-prompt-extras esh-help company-statistics company auto-yasnippet yasnippet auto-dictionary ac-ispell auto-complete ws-butler window-numbering which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide ido-vertical-mode hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump f s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed dash aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async quelpa package-build spacemacs-theme)))
  '(vc-annotate-background nil)
  '(vc-annotate-color-map
    (quote
