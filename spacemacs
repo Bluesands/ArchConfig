@@ -56,8 +56,8 @@ values."
      (shell :variables
             shell-default-height 30
             shell-default-position 'bottom
-            ;; shell-default-shell 'multi-term)
-            shell-default-shell 'eshell)
+            shell-default-shell 'multi-term)
+            ;; shell-default-shell 'eshell)
      (python :variables
              python-sort-imports-on-save t
              python-fill-column 99
@@ -66,6 +66,7 @@ values."
      sql
      html
      javascript
+     ruby
 
      (spell-checking :variables
                      spell-checking-enable-by-default nil
@@ -170,7 +171,7 @@ values."
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
    dotspacemacs-default-font '("Source Code Pro"
-                               :size 16
+                               :size 15
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
@@ -350,26 +351,42 @@ explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
   ;; 显示行号
   (add-hook 'find-file-hook (lambda () (linum-mode 1)))
+  ;; set youdao-dictionary keys-map
+  ;; enable cache
+  (setq url-automatic-caching t)
   (spacemacs/set-leader-keys "oy" 'youdao-dictionary-search-at-point+)
+  (spacemacs/set-leader-keys "oi" 'youdao-dictionary-search-from-input)
+  (spacemacs/set-leader-keys "or" 'youdao-dictionary-search-and-replace)
+  (spacemacs/set-leader-keys "ov" 'youdao-dictionary-play-voice-at-point)
+  (spacemacs/set-leader-keys "op" 'youdao-dictionary-search-at-point+)
 
   ;; ipython 设置
   (setq python-shell-completion-native-enable nil)
   (setq python-shell-interpreter "ipython")
+  ;; https://github.com/syl20bnr/spacemacs/issues/6622
+  (setq python-shell-interpreter-args "--simple-prompt -i")
+
+  ;; set python indent-tabs
+  (setq python-indent-guess-indent-offset nil)
+
 
   ;; spacemacs can be used as the $EDITOR for editing git commits messages.
   ;; (global-git-commit-mode t)
 
   ;; set spacemacs font
-  (spacemacs//set-monospaced-font "Source Code Pro" "BabelStone Han" 15 13.5)
+  (spacemacs//set-monospaced-font "Source Code Pro" "wqy-microhei" 14 16)
 
   ;; set the cursor to bar
   (setq-default evil-insert-state-cursor 'bar)
 
+  ;; org-mode highlight code
+  (setq org-src-fontify-natively t)
   ;; org-mode configuration
   (org-babel-do-load-languages
     'org-babel-load-languages
     '(
       (python . t)
+      (sql . t)
       (shell . t)
       (emacs-lisp . t)
       (js . t)
@@ -384,7 +401,7 @@ you should place your code here."
            :publishing-directory "/home/qiang/Bluesands.github.io/"
            :recursive t
            :publishing-function org-html-publish-to-html
-           :headline-levels 2
+           :headline-levels 6
            :auto-sitemap t                  ; Generate sitemap.org automagically...
            :sitemap-filename "sitemap.org"  ; ... call it sitemap.org (it's the default)...
            :sitemap-title "Sitemap"         ; ... with title 'Sitemap'.
@@ -397,14 +414,14 @@ you should place your code here."
            :html-link-home "index.html"
            :html-link-up "index.html"
            :table-of-contents t
-           :toc-levels 2                    ; Just the default for this project.
+           :toc-levels 6                    ; Just the default for this project.
            :html-head-include-default-style nil ;Disable the default css style
            :html-head-include-scripts nil ;Disable the default javascript snippet
 
            :html-head "<link rel=\"stylesheet\" title=\"Standard\" href=\"/worg/style/worg.css\" type=\"text/css\" />
 <link rel=\"alternate stylesheet\" title=\"Zenburn\" href=\"/worg/style/worg-zenburn.css\" type=\"text/css\" />
 <link rel=\"alternate stylesheet\" title=\"Classic\" href=\"/worg/style/worg-classic.css\" type=\"text/css\" />"
-           :html-postamble ,(with-temp-buffer (insert-file-contents "/home/emacs/git/worg/preamble.html") (buffer-string))
+           :html-preamble ,(with-temp-buffer (insert-file-contents "/home/emacs/git/worg/preamble.html") (buffer-string))
            :html-postamble "<div id='disqus_thread'></div>
                 <script type='text/javascript'>
                     /* * * CONFIGURATION VARIABLES * * */
@@ -441,15 +458,9 @@ you should place your code here."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(ansi-color-faces-vector
-   [default bold shadow italic underline bold bold-italic bold])
- '(ansi-color-names-vector
-   (vector "#839496" "#dc322f" "#859900" "#b58900" "#268bd2" "#d33682" "#2aa198" "#eee8d5"))
- '(evil-want-Y-yank-to-eol nil)
- '(fci-rule-color "#073642" t)
  '(package-selected-packages
    (quote
-    (pdf-tools tablist color-theme-sanityinc-solarized chinese-fonts-setup orgit org-present org org-pomodoro org-download org-bullets web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc company-tern dash-functional tern coffee-mode ivy-hydra flyspell-correct-ivy counsel-projectile counsel swiper wgrep ivy web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode helm-css-scss haml-mode emmet-mode company-web web-completion-data smex monokai-theme flyspell-popup company-quickhelp ein websocket rainbow-mode rainbow-identifiers color-identifiers-mode ranger sql-indent yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode helm-pydoc cython-mode company-anaconda anaconda-mode pythonic youdao-dictionary names chinese-word-at-point smeargle pangu-spacing mmm-mode markdown-toc markdown-mode magit-gitflow helm-gtags helm-gitignore gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gh-md ggtags find-by-pinyin-dired evil-magit magit magit-popup git-commit with-editor diff-hl chinese-pyim chinese-pyim-basedict ace-pinyin pinyinlib ace-jump-mode mwim xterm-color shell-pop org-projectile alert log4e gntp multi-term htmlize helm-company helm-c-yasnippet gnuplot flyspell-correct-helm flyspell-correct flycheck-pos-tip pos-tip flycheck eshell-z eshell-prompt-extras esh-help company-statistics company auto-yasnippet yasnippet auto-dictionary ac-ispell auto-complete ws-butler window-numbering which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide ido-vertical-mode hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump f s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed dash aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async quelpa package-build spacemacs-theme)))
+    (chinese-conv rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rake minitest chruby bundler inf-ruby tablist color-theme-sanityinc-solarized chinese-fonts-setup orgit org-present org org-pomodoro org-download org-bullets web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc company-tern dash-functional tern coffee-mode ivy-hydra flyspell-correct-ivy counsel-projectile counsel swiper wgrep ivy web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode helm-css-scss haml-mode emmet-mode company-web web-completion-data smex monokai-theme flyspell-popup company-quickhelp ein websocket rainbow-mode rainbow-identifiers color-identifiers-mode ranger sql-indent yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode helm-pydoc cython-mode company-anaconda anaconda-mode pythonic youdao-dictionary names chinese-word-at-point smeargle pangu-spacing mmm-mode markdown-toc markdown-mode magit-gitflow helm-gtags helm-gitignore gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gh-md ggtags find-by-pinyin-dired evil-magit magit magit-popup git-commit with-editor diff-hl chinese-pyim chinese-pyim-basedict ace-pinyin pinyinlib ace-jump-mode mwim xterm-color shell-pop org-projectile alert log4e gntp multi-term htmlize helm-company helm-c-yasnippet gnuplot flyspell-correct-helm flyspell-correct flycheck-pos-tip pos-tip flycheck eshell-z eshell-prompt-extras esh-help company-statistics company auto-yasnippet yasnippet auto-dictionary ac-ispell auto-complete ws-butler window-numbering which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide ido-vertical-mode hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump f s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed dash aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async quelpa package-build spacemacs-theme)))
  '(vc-annotate-background nil)
  '(vc-annotate-color-map
    (quote
