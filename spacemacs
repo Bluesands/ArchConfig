@@ -171,7 +171,7 @@ values."
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
    dotspacemacs-default-font '("Source Code Pro"
-                               :size 15
+                               :size 16
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
@@ -369,16 +369,11 @@ you should place your code here."
   ;; set python indent-tabs
   (setq python-indent-guess-indent-offset nil)
 
-
-  ;; spacemacs can be used as the $EDITOR for editing git commits messages.
-  ;; (global-git-commit-mode t)
-
-  ;; set spacemacs font
-  (spacemacs//set-monospaced-font "Source Code Pro" "wqy-microhei" 14 16)
-
   ;; set the cursor to bar
   (setq-default evil-insert-state-cursor 'bar)
 
+  ;; set org-mode _ is _ a_{b}
+  (setq org-export-with-sub-superscripts (quote {}))
   ;; org-mode highlight code
   (setq org-src-fontify-natively t)
   ;; org-mode configuration
@@ -489,4 +484,5 @@ you should place your code here."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+'(org-table ((t (:foreground "#6c71c4" :family "Ubuntu Mono"))))
  )
