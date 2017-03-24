@@ -175,8 +175,8 @@ alias gosshrestart='sudo python /opt/shadowsocks/shadowsocks/local.py -d restart
 # alias tmuxv='bash /home/qiang/tmux.sh'
 # ==============================================================================
 # 制定python虚拟环境路径
-export WORKON_HOME=~/Job/Envs
-export PROJECT_HOME=~/Job/Envs/Projects
+export WORKON_HOME=~/Job/Code/Env
+export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python
 source /usr/bin/virtualenvwrapper.sh
 # ==============================================================================
 # fzfrc配置文件
@@ -203,9 +203,6 @@ export PAGER="/usr/bin/most -s"
 export LESS='-R'
 export LESSOPEN='|~/.lessfilter %s'
 # ==============================================================================
-# 增加node环境变量
-# export PATH="/opt/node-v6.9.1-linux-x64/bin:$PATH"
-
 # cheat 语法高亮
 export CHEATCOLORS=true
 
