@@ -31,7 +31,7 @@ export UPDATE_ZSH_DAYS=13
 # Uncomment the following line to enable command auto-correction.
 # ENABLE_CORRECTION="true"
 
-# Uncomment the following line to display red dots whilst waiting for completion.
+# Uncomment the following line to display red dots whilst waiting fosudo pip install --upgrade virtualenvwrapperr completion.
 COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
@@ -175,8 +175,7 @@ alias gosshrestart='sudo python /opt/shadowsocks/shadowsocks/local.py -d restart
 # alias tmuxv='bash /home/qiang/tmux.sh'
 # ==============================================================================
 # 制定python虚拟环境路径
-export WORKON_HOME=~/Job/Code/Env
-export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python
+export WORKON_HOME=~/Job/Envs
 source /usr/bin/virtualenvwrapper.sh
 # ==============================================================================
 # fzfrc配置文件

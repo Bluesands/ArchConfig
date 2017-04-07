@@ -61,12 +61,17 @@ values."
      (python :variables
              python-sort-imports-on-save t
              python-fill-column 99
+             python-test-runner 'pytest
              )
      ipython-notebook
      sql
      html
-     javascript
+     (javascript :variables
+                 js2-basic-offset 2
+                 js-indent-level 2)
      ruby
+     nginx
+     php
 
      (spell-checking :variables
                      spell-checking-enable-by-default nil
@@ -360,6 +365,25 @@ you should place your code here."
   (spacemacs/set-leader-keys "ov" 'youdao-dictionary-play-voice-at-point)
   (spacemacs/set-leader-keys "op" 'youdao-dictionary-search-at-point+)
 
+  ;; configure php web-mode
+  (defun bs-php-mode-hook ()
+    (setq indent-tabs-mode nil)
+    (setq c-basic-offset 2)
+    (setq php-template-compatibility nil)
+    (subword-mode 1))
+
+  (add-hook 'php-mode-hook 'bs-php-mode-hook)
+
+  (defun bs-web-mode-hook ()
+    (local-set-key '[backtab] 'indent-relative)
+    (setq indent-tabs-mode nil)
+    (setq web-mode-markup-indent-offset 2
+          web-mode-css-indent-offset 2
+          web-mode-code-indent-offset 2))
+
+  (add-hook 'web-mode-hook 'bs-web-mode-hook)
+
+
   ;; ipython 设置
   (setq python-shell-completion-native-enable nil)
   (setq python-shell-interpreter "ipython")
@@ -374,6 +398,8 @@ you should place your code here."
 
   ;; set org-mode _ is _ a_{b}
   (setq org-export-with-sub-superscripts (quote {}))
+  ;; set org-mode　自动换行
+  (add-hook 'org-mode-hook (lambda () (setq toggle-truncate-lines nil)))
   ;; org-mode highlight code
   (setq org-src-fontify-natively t)
   ;; org-mode configuration
@@ -455,7 +481,7 @@ you should place your code here."
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (chinese-conv rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rake minitest chruby bundler inf-ruby tablist color-theme-sanityinc-solarized chinese-fonts-setup orgit org-present org org-pomodoro org-download org-bullets web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc company-tern dash-functional tern coffee-mode ivy-hydra flyspell-correct-ivy counsel-projectile counsel swiper wgrep ivy web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode helm-css-scss haml-mode emmet-mode company-web web-completion-data smex monokai-theme flyspell-popup company-quickhelp ein websocket rainbow-mode rainbow-identifiers color-identifiers-mode ranger sql-indent yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode helm-pydoc cython-mode company-anaconda anaconda-mode pythonic youdao-dictionary names chinese-word-at-point smeargle pangu-spacing mmm-mode markdown-toc markdown-mode magit-gitflow helm-gtags helm-gitignore gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gh-md ggtags find-by-pinyin-dired evil-magit magit magit-popup git-commit with-editor diff-hl chinese-pyim chinese-pyim-basedict ace-pinyin pinyinlib ace-jump-mode mwim xterm-color shell-pop org-projectile alert log4e gntp multi-term htmlize helm-company helm-c-yasnippet gnuplot flyspell-correct-helm flyspell-correct flycheck-pos-tip pos-tip flycheck eshell-z eshell-prompt-extras esh-help company-statistics company auto-yasnippet yasnippet auto-dictionary ac-ispell auto-complete ws-butler window-numbering which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide ido-vertical-mode hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump f s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed dash aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async quelpa package-build spacemacs-theme)))
+    (phpunit phpcbf php-extras php-auto-yasnippets nginx-mode drupal-mode php-mode chinese-conv rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rake minitest chruby bundler inf-ruby tablist color-theme-sanityinc-solarized chinese-fonts-setup orgit org-present org org-pomodoro org-download org-bullets web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc company-tern dash-functional tern coffee-mode ivy-hydra flyspell-correct-ivy counsel-projectile counsel swiper wgrep ivy web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode helm-css-scss haml-mode emmet-mode company-web web-completion-data smex monokai-theme flyspell-popup company-quickhelp ein websocket rainbow-mode rainbow-identifiers color-identifiers-mode ranger sql-indent yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode helm-pydoc cython-mode company-anaconda anaconda-mode pythonic youdao-dictionary names chinese-word-at-point smeargle pangu-spacing mmm-mode markdown-toc markdown-mode magit-gitflow helm-gtags helm-gitignore gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gh-md ggtags find-by-pinyin-dired evil-magit magit magit-popup git-commit with-editor diff-hl chinese-pyim chinese-pyim-basedict ace-pinyin pinyinlib ace-jump-mode mwim xterm-color shell-pop org-projectile alert log4e gntp multi-term htmlize helm-company helm-c-yasnippet gnuplot flyspell-correct-helm flyspell-correct flycheck-pos-tip pos-tip flycheck eshell-z eshell-prompt-extras esh-help company-statistics company auto-yasnippet yasnippet auto-dictionary ac-ispell auto-complete ws-butler window-numbering which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide ido-vertical-mode hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump f s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed dash aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async quelpa package-build spacemacs-theme)))
  '(vc-annotate-background nil)
  '(vc-annotate-color-map
    (quote
@@ -484,5 +510,4 @@ you should place your code here."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
-'(org-table ((t (:foreground "#6c71c4" :family "Ubuntu Mono"))))
- )
+ '(org-table ((t (:foreground "#6c71c4" :family "Ubuntu Mono")))))
